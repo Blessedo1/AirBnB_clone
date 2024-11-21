@@ -2,7 +2,6 @@
 """Create a class BaseModel"""
 import uuid
 from datetime import datetime
-from models import storage
 
 
 class BaseModel:
@@ -34,6 +33,7 @@ class BaseModel:
 
     def save(self):
         """Updates updated_at with current time when instance is changed"""
+        from models import storage
         self.updated_at = datetime.now()
         storage.save()
 
