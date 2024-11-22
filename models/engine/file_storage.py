@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Defines the file storage class for the hbnb clone"""
 import json
-from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -33,11 +32,12 @@ class FileStorage:
         """Deserialize the JSON file to __objects, if it exists."""
         try:
             with open(FileStorage.__file_path) as f:
+                from models.base_model import BaseModel
                 objects_dict = json.load(f)
                 for key, val in objects_dict.items():
                     cls_name = key.split(".")[0]
                     cls = global().get(cls_name)
-                    if:
+                    if cls:
                          self.__objects[key] = cls(**val)
         except FileNotFoundError:
             pass
